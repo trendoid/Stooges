@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Yay, jQuery!</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+	<form>
+		<input type="text" name="name" autofocus>
+		<input type="submit" value="Stoogify!" />&nbsp;
+		<input name="reset" type="button" value="Reset" />
+	</form>
+	<ul id="stooges">
+	</ul>
+	<script>
+		$('form').submit(function(ev){
+				ev.preventDefault();
+				var nameInput = $(this).find('input[name=name]');
+				var name = nameInput.val();
+				$('#stooges').append('<li>' + name + '</li>');
+				nameInput.val('').focus();
+			}		);
+		
+		$('input[name=reset]').click(
+			function(ev){
+				$('#stooges').html(' ');
+			}
+		);
+	</script>
+</body>
+
+</html>
